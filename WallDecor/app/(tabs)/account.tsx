@@ -1,11 +1,11 @@
 import { View, Text} from "react-native"
 
 
-export default function ForYou(){
+export default function Account(){
     return(
         <View>
             <Text>
-                inside explore page
+               inside Account page
             </Text>
         </View>
     );
