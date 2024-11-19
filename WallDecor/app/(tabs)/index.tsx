@@ -15,6 +15,6 @@ export default function ForYou(){
             <Tab.Screen name="Library" component={Library}/>
             <Tab.Screen name="Liked" component={Liked}/>
             <Tab.Screen name="Suggested" component={Suggested}/>
- </Tab.Navigator>
+        </Tab.Navigator>
     );
 }
