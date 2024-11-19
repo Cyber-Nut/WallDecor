@@ -14,12 +14,13 @@ export const DownloadPicture = ({onClose}:{
     console.log('handleSheetChanges', index);
   }, []);
 
+  const snapPoints = useMemo(() => ["99%"], []);
   // renders
   return (
     <GestureHandlerRootView style={styles.container}>
       <BottomSheet
       onClose={onClose}
-      snapPoints={["99%"]}
+      snapPoints={snapPoints}
         ref={bottomSheetRef}
         onChange={handleSheetChanges}
         enablePanDownToClose = {true} //This wil enable us to close the bottom sheet by dragging down

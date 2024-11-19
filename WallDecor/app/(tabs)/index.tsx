@@ -1,20 +1,59 @@
-import { View, Text} from "react-native"
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Library from "../library";
-import Liked from "../liked";
-import Suggested from "../suggested";
-// This dependency need to be installed from react navigation. This is a seperate feature from expo router(acc to my konwledge we can't do nested navigation from expo router)
-const Tab = createMaterialTopTabNavigator();
+import ParallaxScrollView from "@/components/ParallaxScrollView";
+import { View, Text, Button} from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Image } from "react-native"
+import { useWallpapers, Wallpaper } from "@/hooks/useWallpapers";
+import { ImageCard } from "@/components/ImageCard";
+import { StyleSheet } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
+import { ThemedView } from "@/components/ThemedView";
 
 
+export default function Explore(){
+    const wallpapers = useWallpapers(); //Calls the useWallpapers hook to retrieve an array of wallpaper objects
 
-export default function ForYou(){
-    
     return(
-        <Tab.Navigator>
-            <Tab.Screen name="Library" component={Library}/>
-            <Tab.Screen name="Liked" component={Liked}/>
-            <Tab.Screen name="Suggested" component={Suggested}/>
-        </Tab.Navigator>
+    
+      <SafeAreaView style = {{flex: 1}} >
+        <ParallaxScrollView headerBackgroundColor={{dark: "black", light: "white"}} headerImage={<Image style={{flex: 1}} source={{uri: wallpapers[0]?.url ?? ""}}/>} >
+
+         <ThemedView style={styles.container}>
+            <ThemedView style={styles.innerContainer}>
+                <FlatList
+                data={wallpapers.filter((_, index) => index%2 ===0)}
+                renderItem={({item})=>
+                <View style={styles.imageContainer}>
+                    <ImageCard wallpaper={item}/>
+                </View>}
+                keyExtractor={item=>item.name}/>
+            </ThemedView>
+
+            <ThemedView style={styles.innerContainer}>
+                <FlatList
+                 data={wallpapers.filter((_, index) => index%2 ===1)}
+                renderItem={({item})=>
+                <View style={styles.imageContainer}>
+                    <ImageCard wallpaper={item}/>
+                </View>}
+                keyExtractor={item=>item.name}/>
+            </ThemedView>
+         </ThemedView>
+        </ParallaxScrollView>
+      </SafeAreaView>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: "row",
+        marginLeft: 15
+    },
+    innerContainer: {
+        flex: 1,
+    },
+
+    imageContainer:{
+        paddingVertical: 10
+    }
+});
