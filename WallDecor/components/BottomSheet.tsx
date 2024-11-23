@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text:{
+    color: 'black',
     paddingTop: 20,
     textAlign: 'center',
     fontSize: 25,

@@ -1,54 +1,67 @@
-export interface Wallpaper{
+export interface Wallpaper {
     url: string;
     name: string;
 }
-// This defines the structure of a wallpaper object. Any object conforming to this interface must have. This ensures type safety and provides autocompletion in your editor when working with wallpaper objects.
+
+interface FullWallpaper extends Wallpaper {
+    liked: boolean;
+    suggested: boolean;
+    library: boolean;
+}
+
+export function useSuggestedWallpapers(): FullWallpaper[] {
+    const wallpapers = useWallpapers();
+    return wallpapers.filter(wallpaper => wallpaper.suggested);
+}
+
+export function useLikedWallpapers(): FullWallpaper[] {
+    const wallpapers = useWallpapers();
+    return wallpapers.filter(wallpaper => wallpaper.liked);
+}
+
+export function useLibraryWallpapers(): FullWallpaper[] {
+    const wallpapers = useWallpapers();
+    return wallpapers.filter(wallpaper => wallpaper.library);
+}
 
 
-export function useWallpapers(): Wallpaper[]{
-    return[{
-        url: "https://ideogram.ai/assets/image/lossless/response/UOsyKzRNQHiVcVFDxzzRMw",
-        "name": "Heritage"
+export function useWallpapers(): FullWallpaper[] {
+    return [{
+        url: "https://ideogram.ai/assets/progressive-image/balanced/response/grtS8AsZRGyLm3VJ2SHS7g",
+        "name": "Heritage",
+        liked: true,
+        suggested: true,
+        library: false
     }, {
-        url: "https://ideogram.ai/assets/image/lossless/response/kG4Ev5rST76dHM29xXPxjA",
-        "name": "Fish"
+        url: "https://ideogram.ai/assets/progressive-image/balanced/response/0reS7n7eRfClLKHIEiWJUw",
+        "name": "Late night",
+        liked: true,
+        suggested: false,
+        library: true
     },
     {
-        url: "https://ideogram.ai/assets/progressive-image/balanced/response/Ltl5b_AIRR6FuJ-QVPr_bg",
-        "name": "Bird"
+        url: "https://ideogram.ai/assets/progressive-image/balanced/response/O0l3cIsdSJm7CRjGqrb5-Q",
+        "name": "Motivation",
+        liked: false,
+        suggested: true,
+        library: false
     }, {
-        url: "https://ideogram.ai/assets/progressive-image/balanced/response/rD6KLXQUSlOgHzPv7qNXfw",
-        "name": "Pig"
-    },
-    
-    {
-        url: "https://ideogram.ai/assets/progressive-image/balanced/response/iWL-ErSdTH2SOktEwp5Z6w",
-        "name": "Monkey"
+        url: "https://ideogram.ai/assets/progressive-image/balanced/response/6n67jVOxTRW0-xEqMpLw9A",
+        name: "Night sky",
+        liked: false,
+        suggested: true,
+        library: false
     }, {
-        url: "https://ideogram.ai/assets/progressive-image/balanced/response/9R0CiG5gSV6DOImFcvHEmQ",
-        "name": "Cat"
-    },
-    {
-        url: "https://ideogram.ai/assets/image/lossless/response/hnZTTA-oRZG0izTclHnxsw",
-        "name": "Pussy Cat"
-    },
-    {
-        url: "https://ideogram.ai/assets/image/lossless/response/pApj908xS6CbJfMMNbNL6g",
-        "name": "Afraid Cat"
-    },
-    {
-        url: "https://ideogram.ai/assets/image/lossless/response/zZRyVV4uT4GWmCxEQz9BdA",
-        "name": "Black Wolf"
-    },
-    {
-        url: "https://ideogram.ai/assets/progressive-image/balanced/response/jSKnfE8QSDyft0oQgHmJtQ",
-        "name": "Cock"
-    },
-    {
-        url: "https://ideogram.ai/assets/progressive-image/balanced/response/PQ2GmC5sTIyCrK05ZVXXEA",
-        "name": "DJ Cat"
-    }
-    
-
-]
+        url: "https://ideogram.ai/assets/progressive-image/balanced/response/IfLz4vd4Tfy5fnBlMN0cLA",
+        name: "Sunrise",
+        liked: false,
+        suggested: true,
+        library: false
+    }, {
+        url: "https://ideogram.ai/assets/progressive-image/balanced/response/Hma-KogESI-h9o8oyO1YKg",
+        name: "Shoes",
+        liked: false,
+        suggested: true,
+        library: false
+    }]
 }
