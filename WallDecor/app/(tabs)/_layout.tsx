@@ -1,9 +1,15 @@
+
+import { Colors } from "@/constants/Colors";
 import { FontAwesome } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
+import { useColorScheme } from "react-native";
 
 export default function Layout(){
+    const theme = useColorScheme() ?? "light";
     return(
-        <Tabs screenOptions={{tabBarActiveTintColor: 'blue', headerShown: false}}>
+        <Tabs screenOptions={{ tabBarActiveTintColor: Colors[theme].tint, headerShown: false, tabBarStyle: {
+            backgroundColor: Colors[theme].background
+          }}}>
         <Tabs.Screen
         name = "foryou"
         options={{

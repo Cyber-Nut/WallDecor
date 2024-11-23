@@ -63,5 +63,17 @@ export function useWallpapers(): FullWallpaper[] {
         liked: false,
         suggested: true,
         library: false
-    }]
+    }, {
+        url: "https://ideogram.ai/assets/progressive-image/balanced/response/IfLz4vd4Tfy5fnBlMN0cLA",
+        name: "Sunrise",
+        liked: false,
+        suggested: true,
+        library: false
+    }, {
+        url: "https://ideogram.ai/assets/progressive-image/balanced/response/IfLz4vd4Tfy5fnBlMN0cLA",
+        name: "Sunrise",
+        liked: false,
+        suggested: true,
+        library: false
+    },]
 }

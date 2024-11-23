@@ -14,11 +14,44 @@ export default function Account(){
             <ThemedView style={{flex: 1}}>
               <LoginButtons/>
               <ThemeSelector/>
+              <About/>
             </ThemedView>
           
         </SafeAreaView>
          
     );
+}
+
+
+function About(){
+  return(
+    <ThemedView style={styles.themeChangeSection}>
+         <ThemedText style={styles.HeadingText}>About</ThemedText>
+       
+         <ThemedView style={{marginTop: 10}}>
+            <Pressable>
+                <ThemedText style={{margin: 10, fontSize: 18}}>
+                  About
+                </ThemedText>
+            </Pressable>
+            <Pressable>
+                <ThemedText style={{margin: 10, fontSize: 18}}>
+                  Privacy Policy
+                </ThemedText>
+            </Pressable>
+            <Pressable>
+                <ThemedText style={{margin: 10, fontSize: 18}}>
+                  Terms of Service
+                </ThemedText>
+            </Pressable>
+            <Pressable>
+                <ThemedText style={{margin: 10, fontSize: 18}}>
+                  Licences
+                </ThemedText>
+            </Pressable>
+         </ThemedView>
+    </ThemedView>
+  );
 }
 
 function ThemeSelector(){
